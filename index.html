@@ -2,435 +2,886 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080811">
-<meta name="description" content="Download FRIEND Tour BD Free Fire Tournament App for Android.">
-<title>FRIEND Tour BD | Download APK</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="app_icon.png">
+  <title>FRIEND TOUR BD - Free Fire Tournament App</title>
+  <meta name="description" content="Download FRIEND TOUR BD, a Free Fire tournament app. Join matches, explore tournaments and play with friends.">
+  <meta name="theme-color" content="#080914">
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <link rel="icon" type="image/png" href="./app_icon.png">
+  <link rel="apple-touch-icon" href="./app_icon.png">
 
-:root {
-  --red: #ff354f;
-  --blue: #35d9ff;
-  --bg: #080811;
-}
+  <style>
+    :root {
+      --bg: #080914;
+      --panel: #101326;
+      --red: #ff3157;
+      --blue: #38bfff;
+      --purple: #8b5cf6;
+      --white: #f8faff;
+      --muted: #a8b0ca;
+      --border: rgba(255,255,255,.1);
+    }
 
-body {
-  font-family: Arial, sans-serif;
-  color: white;
-  background: var(--bg);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(ellipse at 15% 20%, #a51d4140, transparent 45%),
-    radial-gradient(ellipse at 85% 40%, #075c8240, transparent 45%),
-    #080811;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-#stars {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: radial-gradient(#ffffff70 1px, transparent 1px);
-  background-size: 42px 42px;
-  animation: starMove 18s linear infinite;
-  opacity: .3;
-}
+    body {
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(139,92,246,.15), transparent 38%),
+        radial-gradient(ellipse at 85% 35%, rgba(56,191,255,.12), transparent 35%),
+        var(--bg);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-@keyframes starMove {
-  to { background-position: 160px 200px; }
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-header {
-  padding: 18px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-bottom: 1px solid #ffffff18;
-  background: #080811bb;
-  backdrop-filter: blur(14px);
-}
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 17px;
-  font-weight: 900;
-  color: var(--red);
-  letter-spacing: 1px;
-}
+    .background-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .2;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
 
-.brand img {
-  width: 43px;
-  height: 43px;
-  object-fit: contain;
-  border-radius: 12px;
-}
+    .orb {
+      position: fixed;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(95px);
+      opacity: .15;
+      z-index: -1;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite alternate;
+    }
 
-.status {
-  font-size: 11px;
-  color: #75ffb0;
-  border: 1px solid #75ffb055;
-  border-radius: 30px;
-  padding: 5px 11px;
-}
+    .orb-red {
+      background: var(--red);
+      top: 18%;
+      left: -130px;
+    }
 
-.hero {
-  max-width: 1100px;
-  margin: auto;
-  padding: 75px 24px;
-  display: grid;
-  grid-template-columns: 1fr .85fr;
-  gap: 45px;
-  align-items: center;
-}
+    .orb-blue {
+      background: var(--blue);
+      bottom: 5%;
+      right: -130px;
+      animation-delay: 2s;
+    }
 
-.tag {
-  display: inline-block;
-  padding: 7px 13px;
-  border: 1px solid #35d9ff55;
-  border-radius: 30px;
-  background: #35d9ff0c;
-  color: var(--blue);
-  font-size: 11px;
-  letter-spacing: 2px;
-  margin-bottom: 22px;
-}
+    @keyframes float {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(35px); }
+    }
 
-h1 {
-  font-size: clamp(40px, 6vw, 68px);
-  line-height: 1.08;
-  font-weight: 900;
-  letter-spacing: -2px;
-}
+    header {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,9,20,.78);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-h1 span {
-  color: var(--red);
-  text-shadow: 0 0 35px #ff354f66;
-}
+    .nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 15px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
 
-.description {
-  margin: 22px 0;
-  max-width: 490px;
-  color: #b8bbcf;
-  font-size: 15px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
 
-.download {
-  display: inline-block;
-  padding: 15px 27px;
-  color: white;
-  text-decoration: none;
-  font-weight: 900;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #ff5269, #d7153c);
-  box-shadow: 0 7px 0 #851027, 0 12px 35px #ff354f55;
-  transition: transform .2s, box-shadow .2s;
-}
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 13px;
+      box-shadow: 0 0 18px rgba(255,49,87,.2);
+    }
 
-.download:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 0 #851027, 0 15px 40px #ff354f88;
-}
+    .brand span {
+      color: var(--red);
+    }
 
-.download:active {
-  transform: translateY(3px);
-  box-shadow: 0 3px 0 #851027;
-}
+    .nav-link {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color .2s;
+    }
 
-.fileinfo {
-  color: #999db2;
-  font-size: 12px;
-  margin-top: 18px;
-}
+    .nav-link:hover {
+      color: white;
+    }
 
-.art {
-  min-height: 350px;
-  display: grid;
-  place-items: center;
-  perspective: 1000px;
-}
+    .nav-download {
+      background: linear-gradient(110deg, var(--red), #ff7048);
+      color: white;
+      padding: 11px 17px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 5px 22px rgba(255,49,87,.22);
+    }
 
-.app-card {
-  width: min(100%, 320px);
-  aspect-ratio: .88;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 17px;
-  border: 1px solid #ff354f77;
-  border-radius: 26px;
-  background:
-    radial-gradient(circle at center, #ff354f25, transparent 58%),
-    linear-gradient(145deg, #222235, #0d0d18);
-  box-shadow: 0 25px 70px #0009, inset 0 0 35px #ff354f12;
-  animation: float 5s ease-in-out infinite;
-}
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0 22px;
+    }
 
-.app-card::before {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border: 1px solid #ff526955;
-  border-radius: 50%;
-  box-shadow: 0 0 35px #ff354f25;
-}
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 55px;
+      padding: 65px 0 75px;
+    }
 
-.app-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 35%, #ffffff18 50%, transparent 65%);
-  transform: translateX(-120%);
-  animation: shine 5s infinite;
-}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 13px;
+      border: 1px solid rgba(56,191,255,.28);
+      background: rgba(56,191,255,.07);
+      color: #87dcff;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      margin-bottom: 24px;
+    }
 
-.app-card img {
-  position: relative;
-  z-index: 1;
-  width: 145px;
-  height: 145px;
-  object-fit: contain;
-  border-radius: 25px;
-  filter: drop-shadow(0 0 25px #ff354f55);
-}
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #47f0a4;
+      box-shadow: 0 0 10px #47f0a4;
+    }
 
-.app-card h2,
-.app-card p {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
+    h1 {
+      font-size: clamp(38px, 5.7vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -2.4px;
+      font-weight: 1000;
+      margin-bottom: 22px;
+    }
 
-.app-card h2 {
-  font-size: 21px;
-}
+    .gradient-text {
+      display: block;
+      background: linear-gradient(100deg, #ff4166 5%, #b37aff 48%, #45d1ff 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 22px rgba(139,92,246,.14));
+    }
 
-.app-card p {
-  font-size: 11px;
-  color: var(--blue);
-  letter-spacing: 3px;
-}
+    .hero-description {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
 
-@keyframes float {
-  0%, 100% { transform: rotateY(-9deg) rotateX(4deg) translateY(0); }
-  50% { transform: rotateY(7deg) rotateX(-3deg) translateY(-12px); }
-}
+    .actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
 
-@keyframes shine {
-  0%, 60% { transform: translateX(-120%); }
-  85%, 100% { transform: translateX(120%); }
-}
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 12px;
+      padding: 0 22px;
+      font-weight: 900;
+      font-size: 14px;
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+    }
 
-.features {
-  max-width: 1050px;
-  padding: 20px;
-  margin: 0 auto 65px;
-}
+    .btn:hover {
+      transform: translateY(-3px);
+    }
 
-.section-title {
-  text-align: center;
-  font-size: 29px;
-}
+    .btn-primary {
+      background: linear-gradient(110deg, #ff3157, #ff6848);
+      color: white;
+      box-shadow: 0 9px 30px rgba(255,49,87,.25);
+    }
 
-.subtitle {
-  text-align: center;
-  color: #999db2;
-  font-size: 13px;
-  margin: 8px 0 28px;
-}
+    .btn-primary:hover {
+      box-shadow: 0 12px 36px rgba(255,49,87,.4);
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: white;
+    }
 
-.feature {
-  padding: 24px;
-  border: 1px solid #ffffff18;
-  border-radius: 17px;
-  background: linear-gradient(145deg, #202033, #10101b);
-  box-shadow: 0 12px 30px #0004;
-  transition: .25s;
-}
+    .download-info {
+      margin-top: 17px;
+      color: #8992ad;
+      font-size: 11px;
+      line-height: 1.8;
+    }
 
-.feature:hover {
-  transform: translateY(-7px);
-  border-color: #ff354f88;
-}
+    .download-info strong {
+      color: #d7def4;
+    }
 
-.feature .icon {
-  font-size: 32px;
-}
+    .visual {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
 
-.feature h3 {
-  margin: 10px 0 6px;
-  color: #fff;
-}
+    .ring {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border: 1px solid rgba(56,191,255,.25);
+      border-radius: 50%;
+      box-shadow: 0 0 50px rgba(56,191,255,.06), inset 0 0 45px rgba(139,92,246,.05);
+      animation: rotate 22s linear infinite;
+    }
 
-.feature p {
-  font-size: 13px;
-  color: #b4b6c9;
-}
+    .ring::before,
+    .ring::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,49,87,.25);
+      border-radius: 50%;
+      inset: 22px;
+    }
 
-.install {
-  max-width: 850px;
-  margin: 0 auto 60px;
-  padding: 25px;
-  text-align: center;
-  border: 1px solid #ffffff18;
-  border-radius: 17px;
-  background: #151522;
-}
+    .ring::after {
+      inset: 48px;
+      border-color: rgba(139,92,246,.3);
+    }
 
-.install p {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #b4b6c9;
-}
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
 
-footer {
-  padding: 25px 15px;
-  text-align: center;
-  border-top: 1px solid #ffffff18;
-  color: #999db2;
-  font-size: 12px;
-}
+    .app-card {
+      position: relative;
+      z-index: 2;
+      width: 270px;
+      padding: 24px 21px 22px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(31,35,65,.94), rgba(13,15,32,.96));
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        0 0 45px rgba(139,92,246,.12),
+        inset 0 1px 0 rgba(255,255,255,.1);
+      transform: rotateY(-8deg) rotateX(4deg);
+      animation: card-float 4s ease-in-out infinite;
+    }
 
-footer p + p {
-  margin-top: 5px;
-}
+    @keyframes card-float {
+      0%, 100% { transform: translateY(0) rotateY(-8deg) rotateX(4deg); }
+      50% { transform: translateY(-13px) rotateY(-4deg) rotateX(2deg); }
+    }
 
-@media (max-width: 720px) {
-  header { padding: 15px 5%; }
-  .brand { font-size: 13px; }
-  .brand img { width: 36px; height: 36px; }
-  .status { font-size: 9px; }
+    .app-icon {
+      width: 155px;
+      height: 155px;
+      object-fit: contain;
+      border-radius: 30px;
+      margin: 0 auto 19px;
+      filter: drop-shadow(0 0 20px rgba(255,49,87,.22));
+    }
 
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 50px 22px;
-    gap: 35px;
-  }
+    .app-card h2 {
+      font-size: 21px;
+      letter-spacing: .7px;
+      margin-bottom: 8px;
+    }
 
-  .art { min-height: 300px; }
-  .app-card { max-width: 280px; }
-  .grid { grid-template-columns: 1fr; }
-  .section-title { font-size: 25px; }
-}
-</style>
+    .app-card p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mini-badges {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .mini-badges span {
+      padding: 7px 9px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #dce5ff;
+    }
+
+    .floating-tag {
+      position: absolute;
+      z-index: 3;
+      border: 1px solid var(--border);
+      background: rgba(16,19,38,.92);
+      backdrop-filter: blur(10px);
+      padding: 12px 15px;
+      border-radius: 13px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.25);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tag-one {
+      top: 58px;
+      right: -4px;
+      color: #8cddff;
+    }
+
+    .tag-two {
+      bottom: 55px;
+      left: -4px;
+      color: #ff8ca2;
+    }
+
+    .features {
+      padding: 55px 0 75px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 35px;
+    }
+
+    .section-heading .small-title {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      margin-bottom: 13px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 39px);
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .feature-card {
+      background: linear-gradient(145deg, rgba(20,24,47,.86), rgba(13,15,30,.86));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px 22px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(56,191,255,.4);
+    }
+
+    .feature-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 47px;
+      height: 47px;
+      border-radius: 13px;
+      background: rgba(139,92,246,.13);
+      border: 1px solid rgba(139,92,246,.24);
+      font-size: 23px;
+      margin-bottom: 19px;
+    }
+
+    .feature-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .download-section {
+      padding: 15px 0 85px;
+    }
+
+    .download-panel {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 47px 24px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,49,87,.22);
+      background:
+        radial-gradient(ellipse at top left, rgba(255,49,87,.12), transparent 55%),
+        radial-gradient(ellipse at bottom right, rgba(56,191,255,.12), transparent 55%),
+        rgba(16,19,38,.8);
+    }
+
+    .download-panel h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      margin-bottom: 14px;
+    }
+
+    .download-panel p {
+      max-width: 600px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .download-panel .btn {
+      margin: 0 auto;
+    }
+
+    .install-note {
+      margin-top: 16px;
+      color: #8e97b1;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 20px;
+      text-align: center;
+      color: #7f89a5;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    footer strong {
+      color: #dce3fa;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding-top: 55px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      .visual {
+        min-height: 410px;
+      }
+
+      .tag-one {
+        right: 7%;
+      }
+
+      .tag-two {
+        left: 7%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        padding: 12px 15px;
+      }
+
+      .brand {
+        font-size: 12px;
+        gap: 8px;
+      }
+
+      .brand img {
+        width: 37px;
+        height: 37px;
+      }
+
+      .nav-download {
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      main {
+        padding: 0 16px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0 45px;
+      }
+
+      h1 {
+        font-size: clamp(37px, 11vw, 53px);
+        letter-spacing: -1.6px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .visual {
+        min-height: 365px;
+      }
+
+      .ring {
+        width: 285px;
+        height: 285px;
+      }
+
+      .app-card {
+        width: 235px;
+        padding: 20px 16px;
+      }
+
+      .app-icon {
+        width: 130px;
+        height: 130px;
+      }
+
+      .tag-one {
+        top: 22px;
+        right: 0;
+      }
+
+      .tag-two {
+        bottom: 22px;
+        left: 0;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        padding: 35px 0 55px;
+      }
+
+      .download-section {
+        padding-bottom: 55px;
+      }
+
+      .download-panel {
+        padding: 37px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div id="stars"></div>
+  <div class="background-grid"></div>
+  <div class="orb orb-red"></div>
+  <div class="orb orb-blue"></div>
 
-<header>
-  <div class="brand">
-    <img src="app_icon.png" alt="FRIEND Tour BD App Icon">
-    <span>FRIEND TOUR BD</span>
-  </div>
-  <div class="status">● ANDROID APP</div>
-</header>
-
-<main>
-  <section class="hero">
-    <div>
-      <div class="tag">FREE FIRE TOURNAMENT</div>
-
-      <h1>ENTER THE<br><span>BATTLE.</span></h1>
-
-      <p class="description">
-        Welcome to FRIEND Tour BD! Explore tournaments,
-        join matches and enjoy your Free Fire gaming experience.
-      </p>
-
-      <a class="download"
-         href="https://github.com/rubelvi8976-rgb/friend-tour-bd/releases/latest/download/FRIEND-Tour-BD.apk"
-         target="_blank"
-         rel="noopener noreferrer">
-        ⬇ DOWNLOAD APK
+  <!-- Navigation -->
+  <header>
+    <nav class="nav">
+      <a class="brand" href="./" aria-label="FRIEND TOUR BD Home">
+        <img src="./app_icon.png" alt="FRIEND TOUR BD app icon">
+        <div>FRIEND <span>TOUR BD</span></div>
       </a>
 
-      <p class="fileinfo">
-        ANDROID · APK · APPROX. 60 MB
-      </p>
-    </div>
+      <a class="nav-link" href="#features">FEATURES</a>
 
-    <div class="art">
-      <div class="app-card">
-        <img src="app_icon.png" alt="FRIEND Tour BD Logo">
-        <h2>FRIEND TOUR BD</h2>
-        <p>PLAY · COMPETE · WIN</p>
+      <a class="nav-download"
+         href="https://github.com/rubelvi8976-rgb/friend-tour-bd/releases/latest/download/FRIEND-Tour-BD.apk">
+        DOWNLOAD APK ↓
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          FREE FIRE TOURNAMENT APP
+        </div>
+
+        <h1>
+          PLAY WITH
+          <span class="gradient-text">YOUR FRIENDS.</span>
+          WIN TOGETHER.
+        </h1>
+
+        <p class="hero-description">
+          Welcome to FRIEND TOUR BD! Explore Free Fire tournaments,
+          join matches and enjoy gaming with your squad.
+          Download the Android app and get started.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="https://github.com/rubelvi8976-rgb/friend-tour-bd/releases/latest/download/FRIEND-Tour-BD.apk">
+            <span aria-hidden="true">⬇</span>
+            DOWNLOAD APK
+          </a>
+
+          <a class="btn btn-secondary" href="#features">
+            EXPLORE FEATURES →
+          </a>
+        </div>
+
+        <p class="download-info">
+          <strong>Android APK</strong> · Approx. 60 MB<br>
+          Official release: v1.0.0
+        </p>
       </div>
+
+      <div class="visual" aria-label="FRIEND TOUR BD app preview">
+        <div class="ring"></div>
+
+        <div class="floating-tag tag-one">
+          ⚡ GAMING COMMUNITY
+        </div>
+
+        <div class="app-card">
+          <img class="app-icon"
+               src="./app_icon.png"
+               alt="FRIEND TOUR BD app icon">
+
+          <h2>FRIEND TOUR BD</h2>
+          <p>Your squad. Your tournament.<br>Your gaming journey.</p>
+
+          <div class="mini-badges">
+            <span>FREE FIRE</span>
+            <span>ANDROID</span>
+            <span>TOURNAMENT</span>
+          </div>
+        </div>
+
+        <div class="floating-tag tag-two">
+          🎮 LET'S PLAY!
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+      <div class="section-heading">
+        <div class="small-title">WHY FRIEND TOUR BD?</div>
+        <h2>YOUR GAMING JOURNEY STARTS HERE</h2>
+        <p>
+          Everything you need to get started with your Free Fire
+          tournament experience in one app.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <h3>Tournament Matches</h3>
+          <p>
+            Explore available tournament matches and check their
+            details directly in the app.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Play With Friends</h3>
+          <p>
+            Join the gaming experience with your friends and squad
+            according to match rules.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Easy APK Download</h3>
+          <p>
+            Download the Android installation file directly from
+            GitHub Releases without a Gmail login.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Match Details</h3>
+          <p>
+            Check available match information, slots and room
+            details provided inside the app.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Quick Access</h3>
+          <p>
+            Keep the app on your Android device for convenient
+            access to the tournament dashboard.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3>Made for Gamers</h3>
+          <p>
+            A gaming-focused experience designed for the
+            FRIEND TOUR BD community.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="download-section" id="download">
+      <div class="download-panel">
+        <h2>READY TO JOIN THE GAME?</h2>
+
+        <p>
+          Download FRIEND TOUR BD for Android.
+          Tap the button below to download the official APK
+          from our GitHub Releases page.
+        </p>
+
+        <a class="btn btn-primary"
+           href="https://github.com/rubelvi8976-rgb/friend-tour-bd/releases/latest/download/FRIEND-Tour-BD.apk">
+          <span aria-hidden="true">⬇</span>
+          DOWNLOAD FRIEND TOUR BD
+        </a>
+
+        <div class="install-note">
+          Android APK · Version 1.0.0 · Approximately 60 MB<br>
+          If Android shows a security warning, install only if you
+          trust the app and its source.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <strong>FRIEND TOUR BD</strong><br>
+    Free Fire Tournament Community
+
+    <div class="footer-links">
+      <a href="https://github.com/rubelvi8976-rgb/friend-tour-bd/releases">
+        All Releases
+      </a>
+
+      <a href="https://github.com/rubelvi8976-rgb/friend-tour-bd">
+        GitHub Repository
+      </a>
     </div>
-  </section>
 
-  <section class="features">
-    <h2 class="section-title">BUILT FOR GAMERS</h2>
-    <p class="subtitle">Your tournament experience starts here.</p>
-
-    <div class="grid">
-      <article class="feature">
-        <div class="icon">🏆</div>
-        <h3>Tournaments</h3>
-        <p>Explore available tournaments and join matches.</p>
-      </article>
-
-      <article class="feature">
-        <div class="icon">🎯</div>
-        <h3>Match Center</h3>
-        <p>Check match information and room details in the app.</p>
-      </article>
-
-      <article class="feature">
-        <div class="icon">💎</div>
-        <h3>Player Wallet</h3>
-        <p>Access the wallet features available in the application.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="install">
-    <h2>📱 Installation Guide</h2>
-    <p>
-      Download the APK, open the downloaded file and follow
-      Android's installation instructions. Install only APK files
-      you trust.
+    <p style="margin-top: 15px;">
+      © <span id="year"></span> FRIEND TOUR BD. All rights reserved.
     </p>
-  </section>
-</main>
 
-<footer>
-  <p>© <span id="year"></span> FRIEND TOUR BD</p>
-  <p>Independent tournament app. Not affiliated with Garena.</p>
-</footer>
+    <p>
+      This is an independent community app and is not an official
+      Garena product.
+    </p>
+  </footer>
 
-<script>
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
