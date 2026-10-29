@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rubelvi8976-rgb.github.io/friend-tour-bd/sitemap.xml
